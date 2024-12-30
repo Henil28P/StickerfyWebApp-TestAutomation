@@ -32,5 +32,15 @@ describe('Shopping cart', function() {
         assert.deepEqual(cart.items, {}); // confirm that the cart is empty
         assert.equal(cart.totalPrice, 0); // confirm that the total price of cart is now 0 once emptied
     });
+
+    // set up 3rd test to remove all quantities of a sticker from the cart
+    it('remove all quantities of sticker from the cart', function() {
+        // Add 2 stickers to cart firstly
+        cart.add(product, product.id);
+        cart.add(product, product.id);
+        cart.removeItem(product.id); // remove the above 2 stickers added to cart
+        assert.deepEqual(cart.items, {}); // confirm the cart is empty
+        assert.equal(cart.totalPrice, 0); // confirm the total price of cart is 0
+    });
   });
 });
