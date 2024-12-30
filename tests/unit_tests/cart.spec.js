@@ -42,5 +42,11 @@ describe('Shopping cart', function() {
         assert.deepEqual(cart.items, {}); // confirm the cart is empty
         assert.equal(cart.totalPrice, 0); // confirm the total price of cart is 0
     });
+
+    // Set up 4th test to generate an array of stickers in the cart
+    it('returns an empty array', function() {
+        assert.deepEqual(cart.generateArray(),[]); // the generateArray() from cart.js model stores an array of all the items adding to the cart essentially representing the shopping cart contents
+        // Without adding any items first, the array begins as empty and confirm that by assertion
+    });
   });
 });
