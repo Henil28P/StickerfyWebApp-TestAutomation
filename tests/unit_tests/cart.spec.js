@@ -21,8 +21,16 @@ describe('Shopping cart', function() {
 
     // set up 1st test to add a sticker to the cart
     it('adds a sticker to the cart', function() {
-      cart.add(product, product.id); // call add() method of cart model to add specific sticker (defined in productkey above) to user cart
-      assert.equal(cart.totalPrice, 5); // confirm that the cart price is equal to 5 which is price of product defined above
+        cart.add(product, product.id); // call add() method of cart model to add specific sticker (defined in productkey above) to user cart
+        assert.equal(cart.totalPrice, 5); // confirm that the cart price is equal to 5 which is price of product defined above
+    });
+
+    // set up 2nd test to remove a sticker from the cart
+    it('removes a sticker from the cart', function() {
+        cart.add(product, product.id);
+        cart.reduceByOne(product.id); // use reduceByOne() from cart model to decrease quantity by 1 of the product and remove sticker in the cart
+        assert.deepEqual(cart.items, {}); // confirm that the cart is empty
+        assert.equal(cart.totalPrice, 0); // confirm that the total price of cart is now 0 once emptied
     });
   });
 });
